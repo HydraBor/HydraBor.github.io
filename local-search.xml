@@ -13,14 +13,14 @@
     
     <categories>
       
-      <category>python</category>
+      <category>随笔</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>随笔</tag>
+      <tag>Python</tag>
       
     </tags>
     
@@ -38,14 +38,14 @@
     
     <categories>
       
-      <category>C++</category>
+      <category>题解</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>题解</tag>
+      <tag>C++</tag>
       
     </tags>
     
@@ -63,10 +63,16 @@
     
     <categories>
       
-      <category>C++</category>
+      <category>随笔</category>
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>C++</tag>
+      
+    </tags>
     
   </entry>
   
