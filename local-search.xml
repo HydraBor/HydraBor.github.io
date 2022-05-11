@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>数据结构——平衡树</title>
+    <link href="/2022/05/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+    <url>/2022/05/11/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E5%B9%B3%E8%A1%A1%E6%A0%91/</url>
+    
+    <content type="html"><![CDATA[<p>二叉查找树的时间复杂度不稳定<br>平衡树：AVL, Treap, 红黑树, Splay, WBLT, B树, 替罪羊……<br>（1）有旋 -&gt; Splay, AVL, Treap, 红黑树（王者， 效率最高，情况最复杂）<br>（2）无旋 -&gt; fhq-Treap，替罪羊树</p><h2 id="fhq-Treap（无旋-Treap）"><a href="#fhq-Treap（无旋-Treap）" class="headerlink" title="fhq-Treap（无旋 Treap）"></a>fhq-Treap（无旋 Treap）</h2><p>函数式编程思想<br>Treap &#x3D; Tree + Heap（堆），即二叉搜索树+二叉堆，又名树堆</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C++</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Python-在类方法中传递类对象</title>
     <link href="/2022/05/11/Python-%E5%9C%A8%E7%B1%BB%E6%96%B9%E6%B3%95%E4%B8%AD%E4%BC%A0%E9%80%92%E7%B1%BB%E5%AF%B9%E8%B1%A1/"/>
     <url>/2022/05/11/Python-%E5%9C%A8%E7%B1%BB%E6%96%B9%E6%B3%95%E4%B8%AD%E4%BC%A0%E9%80%92%E7%B1%BB%E5%AF%B9%E8%B1%A1/</url>
@@ -29,16 +54,16 @@
   
   
   <entry>
-    <title>螺旋矩阵题解</title>
-    <link href="/2022/05/10/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%E9%A2%98%E8%A7%A3/"/>
-    <url>/2022/05/10/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%E9%A2%98%E8%A7%A3/</url>
+    <title>测试文章</title>
+    <link href="/2022/05/09/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
+    <url>/2022/05/09/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
     
-    <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P2239">题目链接</a></p><p><strong>本蒟蒻的第一篇题解，写的不好还请神犇们多多海涵。</strong></p><p>我在做这道题的时候最开始想用数组来存下生成的矩阵，再O(1)直接访问。</p><p>然后看了一眼数据范围，，，好家伙开二维数组直接MLE。</p><p>于是我就去洛谷题解大学逛了逛，发现基本都在说暴力会TLE，只能找规律。</p><p>由于我是蒟蒻，看不懂神犇们的规律推导，我就尝试了暴力解法，不出意外TLE了大半。</p><p>可当我吸了口氧后再提交，惊人地AC了。</p><p>于是写下第一篇题解，公布我的AC码以留纪念。</p><hr><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> n, x, y, i = <span class="hljs-number">0</span>, j = <span class="hljs-number">1</span>, temp = <span class="hljs-number">0</span>, cnt = <span class="hljs-number">0</span>;<br>    cin &gt;&gt; n &gt;&gt; x &gt;&gt; y;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> m = <span class="hljs-number">1</span>; m &lt;= (n + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>; m++, temp++) &#123;<br>        <span class="hljs-keyword">while</span> (i + <span class="hljs-number">1</span> &lt;= n - temp &amp;&amp; ++cnt) <span class="hljs-comment">//向右计算</span><br>            <span class="hljs-keyword">if</span> (++i == y &amp;&amp; j == x) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>        <span class="hljs-keyword">while</span> (j + <span class="hljs-number">1</span> &lt;= n - temp &amp;&amp; ++cnt) <span class="hljs-comment">//向下计算</span><br>            <span class="hljs-keyword">if</span> (++j == x &amp;&amp; i == y) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>        <span class="hljs-keyword">while</span> (i - <span class="hljs-number">1</span> &gt;= <span class="hljs-number">1</span> + temp &amp;&amp; ++cnt) <span class="hljs-comment">//向左计算</span><br>            <span class="hljs-keyword">if</span> (--i == y &amp;&amp; j == x) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>        <span class="hljs-keyword">while</span> (j - <span class="hljs-number">1</span> &gt; <span class="hljs-number">1</span> + temp &amp;&amp; ++cnt) <span class="hljs-comment">//向上计算</span><br>            <span class="hljs-keyword">if</span> (--j == x &amp;&amp; i == y) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>大思路就是：</p><h1 id="模拟！"><a href="#模拟！" class="headerlink" title="模拟！"></a><strong>模拟！</strong></h1><p>向右下左上一直走，每走一圈就让 temp+1 以缩小下一圈的范围直到走完 n^2 ，在中途一发现需要求的点直接输出 cnt ，逻辑就是这么简单，神犇轻喷。</p>]]></content>
+    <content type="html"><![CDATA[<p>这是一篇测试文章</p><img src="/2022/05/09/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.png" class="" title="图片引用方法一"><blockquote><p>这真的只是一篇测试文章</p></blockquote>]]></content>
     
     
     <categories>
       
-      <category>题解</category>
+      <category>随笔</category>
       
     </categories>
     
@@ -54,16 +79,16 @@
   
   
   <entry>
-    <title>测试文章</title>
-    <link href="/2022/05/09/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    <url>/2022/05/09/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <title>螺旋矩阵题解</title>
+    <link href="/2021/12/04/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%E9%A2%98%E8%A7%A3/"/>
+    <url>/2021/12/04/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%E9%A2%98%E8%A7%A3/</url>
     
-    <content type="html"><![CDATA[<p>这是一篇测试文章</p><img src="/2022/05/09/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.png" class="" title="图片引用方法一"><blockquote><p>这真的只是一篇测试文章</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://www.luogu.com.cn/problem/P2239">题目链接</a></p><p><strong>本蒟蒻的第一篇题解，写的不好还请神犇们多多海涵。</strong></p><p>我在做这道题的时候最开始想用数组来存下生成的矩阵，再O(1)直接访问。</p><p>然后看了一眼数据范围，，，好家伙开二维数组直接MLE。</p><p>于是我就去洛谷题解大学逛了逛，发现基本都在说暴力会TLE，只能找规律。</p><p>由于我是蒟蒻，看不懂神犇们的规律推导，我就尝试了暴力解法，不出意外TLE了大半。</p><p>可当我吸了口氧后再提交，惊人地AC了。</p><p>于是写下第一篇题解，公布我的AC码以留纪念。</p><hr><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> n, x, y, i = <span class="hljs-number">0</span>, j = <span class="hljs-number">1</span>, temp = <span class="hljs-number">0</span>, cnt = <span class="hljs-number">0</span>;<br>    cin &gt;&gt; n &gt;&gt; x &gt;&gt; y;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> m = <span class="hljs-number">1</span>; m &lt;= (n + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>; m++, temp++) &#123;<br>        <span class="hljs-keyword">while</span> (i + <span class="hljs-number">1</span> &lt;= n - temp &amp;&amp; ++cnt) <span class="hljs-comment">//向右计算</span><br>            <span class="hljs-keyword">if</span> (++i == y &amp;&amp; j == x) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>        <span class="hljs-keyword">while</span> (j + <span class="hljs-number">1</span> &lt;= n - temp &amp;&amp; ++cnt) <span class="hljs-comment">//向下计算</span><br>            <span class="hljs-keyword">if</span> (++j == x &amp;&amp; i == y) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>        <span class="hljs-keyword">while</span> (i - <span class="hljs-number">1</span> &gt;= <span class="hljs-number">1</span> + temp &amp;&amp; ++cnt) <span class="hljs-comment">//向左计算</span><br>            <span class="hljs-keyword">if</span> (--i == y &amp;&amp; j == x) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>        <span class="hljs-keyword">while</span> (j - <span class="hljs-number">1</span> &gt; <span class="hljs-number">1</span> + temp &amp;&amp; ++cnt) <span class="hljs-comment">//向上计算</span><br>            <span class="hljs-keyword">if</span> (--j == x &amp;&amp; i == y) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>大思路就是：</p><h1 id="模拟！"><a href="#模拟！" class="headerlink" title="模拟！"></a><strong>模拟！</strong></h1><p>向右下左上一直走，每走一圈就让 temp+1 以缩小下一圈的范围直到走完 n^2 ，在中途一发现需要求的点直接输出 cnt ，逻辑就是这么简单，神犇轻喷。</p>]]></content>
     
     
     <categories>
       
-      <category>随笔</category>
+      <category>题解</category>
       
     </categories>
     
