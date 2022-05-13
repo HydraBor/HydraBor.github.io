@@ -16,15 +16,15 @@
   <meta name="author" content="Algor-Turling">
   <meta name="keywords" content="programming">
   
-    <meta name="description" content="题目链接 本蒟蒻的第一篇题解，写的不好还请神犇们多多海涵。 我在做这道题的时候最开始想用数组来存下生成的矩阵，再 O(1)O(1)O(1) 直接访问。 然后看了一眼数据范围，，，好家伙开二维数组直接MLE。 于是我就去洛谷题解大学逛了逛，发现基本都在说暴力会TLE，只能找规律。 由于我是蒟蒻，看不懂神犇们的规律推导，我就尝试了暴力解法，不出意外TLE了大半。 可当我吸了口氧后再提交，惊人地AC了。">
+    <meta name="description" content="原题链接 P2239 [NOIP2014 普及组] 螺旋矩阵  思路   数据范围较大，开二维列表会 MLEMLEMLE ，观察发现我们其实不需要将所有位置的数全部存下，只需用 iii, jjj 表示当前位置的坐标。让 iii++ 表示指针向右走， jjj– 表示指针向下走，走的同时 ++cntcntcnt 并判断边界，当找到目标点时输出 cntcntcnt 即可。   以上思路需要开 O2O2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】洛谷P2239-螺旋矩阵">
-<meta property="og:url" content="http://example.com/2021/12/04/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:url" content="http://example.com/2022/05/13/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Algor-Turling&#39;s blog">
-<meta property="og:description" content="题目链接 本蒟蒻的第一篇题解，写的不好还请神犇们多多海涵。 我在做这道题的时候最开始想用数组来存下生成的矩阵，再 O(1)O(1)O(1) 直接访问。 然后看了一眼数据范围，，，好家伙开二维数组直接MLE。 于是我就去洛谷题解大学逛了逛，发现基本都在说暴力会TLE，只能找规律。 由于我是蒟蒻，看不懂神犇们的规律推导，我就尝试了暴力解法，不出意外TLE了大半。 可当我吸了口氧后再提交，惊人地AC了。">
+<meta property="og:description" content="原题链接 P2239 [NOIP2014 普及组] 螺旋矩阵  思路   数据范围较大，开二维列表会 MLEMLEMLE ，观察发现我们其实不需要将所有位置的数全部存下，只需用 iii, jjj 表示当前位置的坐标。让 iii++ 表示指针向右走， jjj– 表示指针向下走，走的同时 ++cntcntcnt 并判断边界，当找到目标点时输出 cntcntcnt 即可。   以上思路需要开 O2O2">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-04T12:25:32.000Z">
-<meta property="article:modified_time" content="2022-05-13T10:13:36.319Z">
+<meta property="article:published_time" content="2022-05-13T11:20:43.000Z">
+<meta property="article:modified_time" content="2022-05-13T11:21:40.717Z">
 <meta property="article:author" content="Algor-Turling">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
@@ -206,8 +206,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-12-04 20:25" pubdate>
-          2021年12月4日 晚上
+        <time datetime="2022-05-13 19:20" pubdate>
+          2022年5月13日 晚上
         </time>
       </span>
     
@@ -218,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          880 字
         
       </span>
     
@@ -229,7 +229,7 @@
         
         
         
-          9 分钟
+          8 分钟
         
       </span>
     
@@ -279,20 +279,16 @@
             
             <div class="markdown-body">
               
-              <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2239">题目链接</a></p>
-<p><strong>本蒟蒻的第一篇题解，写的不好还请神犇们多多海涵。</strong></p>
-<p>我在做这道题的时候最开始想用数组来存下生成的矩阵，再 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 直接访问。</p>
-<p>然后看了一眼数据范围，，，好家伙开二维数组直接MLE。</p>
-<p>于是我就去洛谷题解大学逛了逛，发现基本都在说暴力会TLE，只能找规律。</p>
-<p>由于我是蒟蒻，看不懂神犇们的规律推导，我就尝试了暴力解法，不出意外TLE了大半。</p>
-<p>可当我吸了口氧后再提交，惊人地AC了。</p>
-<p>于是写下第一篇题解，公布我的AC码以留纪念。</p>
-<hr />
+              <h2 id="原题链接"><a class="markdownIt-Anchor" href="#原题链接"></a> 原题链接</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2239">P2239 [NOIP2014 普及组] 螺旋矩阵</a></p>
+<h2 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路</h2>
+<p>  数据范围较大，开二维列表会 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mi>L</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">MLE</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span></span></span></span> ，观察发现我们其实不需要将所有位置的数全部存下，只需用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 表示当前位置的坐标。让 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>++ 表示指针向右走， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>– 表示指针向下走，走的同时 ++<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span></span> 并判断边界，当找到目标点时输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span></span> 即可。<br />
+  以上思路需要开 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">O2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord">2</span></span></span></span> 否则会 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mi>L</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">TLE</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span></span></span></span> 。</p>
+<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h2>
+<details>
+<summary>展开代码</summary>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> n, x, y, i = <span class="hljs-number">0</span>, j = <span class="hljs-number">1</span>, temp = <span class="hljs-number">0</span>, cnt = <span class="hljs-number">0</span>;<br>    cin &gt;&gt; n &gt;&gt; x &gt;&gt; y;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> m = <span class="hljs-number">1</span>; m &lt;= (n + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>; m++, temp++) &#123;<br>        <span class="hljs-keyword">while</span> (i + <span class="hljs-number">1</span> &lt;= n - temp &amp;&amp; ++cnt) <span class="hljs-comment">//向右计算</span><br>            <span class="hljs-keyword">if</span> (++i == y &amp;&amp; j == x) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>        <span class="hljs-keyword">while</span> (j + <span class="hljs-number">1</span> &lt;= n - temp &amp;&amp; ++cnt) <span class="hljs-comment">//向下计算</span><br>            <span class="hljs-keyword">if</span> (++j == x &amp;&amp; i == y) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>        <span class="hljs-keyword">while</span> (i - <span class="hljs-number">1</span> &gt;= <span class="hljs-number">1</span> + temp &amp;&amp; ++cnt) <span class="hljs-comment">//向左计算</span><br>            <span class="hljs-keyword">if</span> (--i == y &amp;&amp; j == x) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>        <span class="hljs-keyword">while</span> (j - <span class="hljs-number">1</span> &gt; <span class="hljs-number">1</span> + temp &amp;&amp; ++cnt) <span class="hljs-comment">//向上计算</span><br>            <span class="hljs-keyword">if</span> (--j == x &amp;&amp; i == y) &#123;<br>                cout &lt;&lt; cnt &lt;&lt; endl;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>大思路就是：</p>
-<h1 id="模拟"><a class="markdownIt-Anchor" href="#模拟"></a> <strong>模拟！</strong></h1>
-<p>向右下左上一直走，每走一圈就让 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>e</mi><mi>m</mi><mi>p</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">temp+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault">m</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 以缩小下一圈的范围直到走完 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> ，在中途一发现需要求的点直接输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span></span> ，逻辑就是这么简单，神犇轻喷。</p>
-
+</details>
               
             </div>
             <hr/>
@@ -337,7 +333,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>【题解】洛谷P2239-螺旋矩阵</div>
-      <div>http://example.com/2021/12/04/螺旋矩阵题解/</div>
+      <div>http://example.com/2022/05/13/螺旋矩阵题解/</div>
     </div>
     <div class="license-meta">
       
@@ -349,7 +345,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年12月4日</div>
+          <div>2022年5月13日</div>
         </div>
       
       
@@ -390,15 +386,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/11/Python-%E5%9C%A8%E7%B1%BB%E6%96%B9%E6%B3%95%E4%B8%AD%E4%BC%A0%E9%80%92%E7%B1%BB%E5%AF%B9%E8%B1%A1/" title="【随笔】Python-在类方法中传递类对象">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【随笔】Python-在类方法中传递类对象</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/05/11/fhq-treap/" title="【学习浅记】fhq-Treap">
+                        <span class="hidden-mobile">【学习浅记】fhq-Treap</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
