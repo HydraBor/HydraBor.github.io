@@ -98,7 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: fluid
+theme: fliud
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
