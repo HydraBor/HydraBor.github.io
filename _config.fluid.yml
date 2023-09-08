@@ -998,8 +998,8 @@ links:
   # Member item of page
   items:
     - {
-      title: "Regin's Blog",
-      intro: "Reginの博客",
+      title: "Reign's Blog",
+      intro: "Reignの博客",
       link: "https://jirui.me/",
       avatar: "https://www.jirui.me/img/avatar.jpg"
     }
