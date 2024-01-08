@@ -1007,7 +1007,7 @@ links:
       title: "AgOH's Blog",
       intro: "AgOHの博客",
       link: "https://stagoh.com/",
-      avatar: "https://stagoh.com/images/Elysium.png"
+      avatar: "https://stagoh.com/images/avatar.jpg"
     }
 
   # 当成员头像加载失败时，替换为指定图片
