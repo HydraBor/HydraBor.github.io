@@ -4,6 +4,7 @@ date: 2024-06-17 21:16:40
 tags: 
     - Node.js
     - Linux
+    - 随笔
 ---
 ## 本文为在 Linux 系统下使用压缩包安装 Node.js(v20.14.0) 详细流程
 
@@ -28,7 +29,7 @@ sudo wget https://nodejs.org/dist/v20.14.0/node-v20.14.0-linux-x64.tar.xz
 
 ### 解压
 
-使用命令 `tar` 命令解压到当前目录：
+使用 `tar` 命令解压到当前目录：
 
 ```bash
 sudo tar xf node-v20.14.0-linux-x64.tar.xz 
