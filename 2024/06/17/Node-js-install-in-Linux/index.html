@@ -24,10 +24,11 @@
 <meta property="og:description" content="本文为在 Linux 系统下使用压缩包安装 Node.js(v20.14.0) 详细流程新建目录在 &#x2F;usr&#x2F;local&#x2F;lib&#x2F; 目录下创建一个空目录用来存放 Node.js 源文件，我这里将其命名为 node： 1sudo mkdir &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node  下载压缩包访问 Node.js 官网选择合适的版本、系统、架构，本文以 v20.14.0-Linux-x64 为例 切">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-17T13:16:40.000Z">
-<meta property="article:modified_time" content="2024-06-17T13:50:56.677Z">
+<meta property="article:modified_time" content="2024-06-17T13:59:57.557Z">
 <meta property="article:author" content="Algor Turling">
 <meta property="article:tag" content="Node.js">
 <meta property="article:tag" content="Linux">
+<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -233,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          295 字
+          293 字
         
       </span>
     
@@ -293,7 +294,7 @@
 <p>切换到刚才新建的目录下，使用 <code>wget</code> 命令下载压缩包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /usr/local/lib/node<br>sudo wget https://nodejs.org/dist/v20.14.0/node-v20.14.0-linux-x64.tar.xz<br></code></pre></td></tr></table></figure>
 
-<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><p>使用命令 <code>tar</code> 命令解压到当前目录：</p>
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><p>使用 <code>tar</code> 命令解压到当前目录：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo tar xf node-v20.14.0-linux-x64.tar.xz <br></code></pre></td></tr></table></figure>
 
 <p>解压完毕后可以选择删除压缩包：</p>
@@ -326,6 +327,8 @@
         <a href="/tags/Node-js/" class="print-no-link">#Node.js</a>
       
         <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/%E9%9A%8F%E7%AC%94/" class="print-no-link">#随笔</a>
       
     </div>
   
