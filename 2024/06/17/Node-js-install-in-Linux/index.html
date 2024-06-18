@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文为在 Linux 系统下使用压缩包安装 Node.js(v20.14.0) 详细流程新建目录在 &#x2F;usr&#x2F;local&#x2F;lib&#x2F; 目录下创建一个空目录用来存放 Node.js 源文件，我这里将其命名为 node： 1sudo mkdir &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node  下载压缩包访问 Node.js 官网选择合适的版本、系统、架构，本文以 v20.14.0-Linux-x64 为例 切">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-17T13:16:40.000Z">
-<meta property="article:modified_time" content="2024-06-17T13:59:57.557Z">
+<meta property="article:modified_time" content="2024-06-18T02:43:15.856Z">
 <meta property="article:author" content="Algor Turling">
 <meta property="article:tag" content="Node.js">
 <meta property="article:tag" content="Linux">
@@ -300,7 +300,7 @@
 <p>解压完毕后可以选择删除压缩包：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">rm</span> node-v20.14.0-linux-x64.tar.xz <br></code></pre></td></tr></table></figure>
 
-<h3 id="添加到环境变量"><a href="#添加到环境变量" class="headerlink" title="添加到环境变量"></a>添加到环境变量</h3><p>在 <code>/etc/profile</code> 目录末尾加上这样两句话：</p>
+<h3 id="添加到环境变量"><a href="#添加到环境变量" class="headerlink" title="添加到环境变量"></a>添加到环境变量</h3><p>在 <code>/etc/profile</code> 文件末尾加上这样两句话：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> NODEJS_HOME=/usr/local/lib/node/node-v20.14.0-linux-x64<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$NODEJS_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
 
 <p>终端操作下使用 <code>vim</code> 编辑器可以对上述文本进行编辑：</p>
@@ -359,7 +359,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年6月17日</div>
+          <div>2024年6月18日</div>
         </div>
       
       
