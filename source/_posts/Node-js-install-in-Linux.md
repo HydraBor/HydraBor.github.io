@@ -43,7 +43,7 @@ sudo rm node-v20.14.0-linux-x64.tar.xz
 
 ### 添加到环境变量
 
-在 `/etc/profile` 目录末尾加上这样两句话：
+在 `/etc/profile` 文件末尾加上这样两句话：
 
 ```bash
 export NODEJS_HOME=/usr/local/lib/node/node-v20.14.0-linux-x64
