@@ -420,7 +420,9 @@ footer:
   # 页脚第一行文字的 HTML，建议保留 Fluid 的链接，用于向更多人推广本主题
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
   content: '
-
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
   '
 
   # 展示网站的 PV、UV 统计数
@@ -540,7 +542,7 @@ post:
     # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值
     # Author, based on `author` field in front-matter, if not set, based on `author` value in hexo config
     author:
-      enable: false
+      enable: true
 
     # 文章日期，优先根据 front-matter 里 date 字段，其次是 md 文件日期
     # Post date, based on `date` field in front-matter, if not set, based on create date of .md file
@@ -579,7 +581,7 @@ post:
   # 在文章开头显示文章更新时间，该时间默认是 md 文件更新时间，可通过 front-matter 中 `updated` 手动指定（和 date 一样格式）
   # Update date is displayed at the beginning of the post. The default date is the update date of the md file, which can be manually specified by `updated` in front-matter (same format as date)
   updated:
-    enable: false
+    enable: true
 
     # 格式参照 ISO-8601 日期格式化
     # ISO-8601 date format

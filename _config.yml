@@ -4,9 +4,9 @@
 
 # Site
 title: Algor's Blog
-subtitle: 'im a subtitle'
-description: 'im a description'
-keywords: compititive-programming
+subtitle: ''
+description: 'Algor Turling 的个人博客，记录编程与 Linux 学习笔记。'
+keywords: competitive-programming, Node.js, Linux
 author: Algor Turling
 language: zh-CN
 timezone: 'Asia/Shanghai'
@@ -82,7 +82,7 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+updated_option: 'date'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
