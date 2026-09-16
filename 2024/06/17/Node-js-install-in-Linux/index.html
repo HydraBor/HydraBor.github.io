@@ -14,26 +14,25 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Algor Turling">
-  <meta name="keywords" content="compititive-programming">
+  <meta name="keywords" content="competitive-programming, Node.js, Linux">
   
-    <meta name="description" content="本文为在 Linux 系统下使用压缩包安装 Node.js(v20.14.0) 详细流程新建目录在 &#x2F;usr&#x2F;local&#x2F;lib&#x2F; 目录下创建一个空目录用来存放 Node.js 源文件，我这里将其命名为 node： 1sudo mkdir &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node  下载压缩包访问 Node.js 官网选择合适的版本、系统、架构，本文以 v20.14.0-Linux-x64 为例 切">
+    <meta name="description" content="使用 Node.js 官方 Linux 二进制压缩包安装 Node.js 和 npm，说明架构选择、SHA-256 校验、Bash 环境变量与安装验证。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于在 Linux 下安装 Node.js">
+<meta property="og:title" content="在 Linux 上使用官方二进制包安装 Node.js">
 <meta property="og:url" content="https://www.algor.top/2024/06/17/Node-js-install-in-Linux/">
 <meta property="og:site_name" content="Algor&#39;s Blog">
-<meta property="og:description" content="本文为在 Linux 系统下使用压缩包安装 Node.js(v20.14.0) 详细流程新建目录在 &#x2F;usr&#x2F;local&#x2F;lib&#x2F; 目录下创建一个空目录用来存放 Node.js 源文件，我这里将其命名为 node： 1sudo mkdir &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node  下载压缩包访问 Node.js 官网选择合适的版本、系统、架构，本文以 v20.14.0-Linux-x64 为例 切">
+<meta property="og:description" content="使用 Node.js 官方 Linux 二进制压缩包安装 Node.js 和 npm，说明架构选择、SHA-256 校验、Bash 环境变量与安装验证。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-17T13:16:40.000Z">
-<meta property="article:modified_time" content="2026-09-16T14:37:18.693Z">
+<meta property="article:modified_time" content="2026-09-16T15:28:16.000Z">
 <meta property="article:author" content="Algor Turling">
 <meta property="article:tag" content="Node.js">
 <meta property="article:tag" content="Linux">
-<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>关于在 Linux 下安装 Node.js - Algor&#39;s Blog</title>
+  <title>在 Linux 上使用官方二进制包安装 Node.js - Algor&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,13 +210,18 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="关于在 Linux 下安装 Node.js"></span>
+            <span id="subtitle" data-typed-text="在 Linux 上使用官方二进制包安装 Node.js"></span>
           
         </div>
 
         
           
   <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Algor Turling
+      </span>
     
     
       <span class="post-meta">
@@ -234,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          293 字
+          866 字
         
       </span>
     
@@ -245,7 +249,7 @@
         
         
         
-          3 分钟
+          8 分钟
         
       </span>
     
@@ -282,36 +286,68 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">关于在 Linux 下安装 Node.js</h1>
+            <h1 id="seo-header">在 Linux 上使用官方二进制包安装 Node.js</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2026年9月16日 晚上
+                  
+                
+              </p>
             
             
               <div class="markdown-body">
                 
-                <h2 id="本文为在-Linux-系统下使用压缩包安装-Node-js-v20-14-0-详细流程"><a href="#本文为在-Linux-系统下使用压缩包安装-Node-js-v20-14-0-详细流程" class="headerlink" title="本文为在 Linux 系统下使用压缩包安装 Node.js(v20.14.0) 详细流程"></a>本文为在 Linux 系统下使用压缩包安装 Node.js(v20.14.0) 详细流程</h2><h3 id="新建目录"><a href="#新建目录" class="headerlink" title="新建目录"></a>新建目录</h3><p>在 <code>/usr/local/lib/</code> 目录下创建一个空目录用来存放 Node.js 源文件，我这里将其命名为 <code>node</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">mkdir</span> /usr/local/lib/node<br></code></pre></td></tr></table></figure>
+                <p>本文记录使用官方预编译二进制压缩包安装 Node.js 的方法，适用于希望手动管理安装目录的 Linux 用户。压缩包已包含 Node.js 和 npm，无需编译源码。</p>
+<span id="more"></span>
 
-<h3 id="下载压缩包"><a href="#下载压缩包" class="headerlink" title="下载压缩包"></a>下载压缩包</h3><p>访问 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/prebuilt-binaries">Node.js</a> 官网选择合适的版本、系统、架构，本文以 <code>v20.14.0-Linux-x64</code> 为例</p>
-<p>切换到刚才新建的目录下，使用 <code>wget</code> 命令下载压缩包：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /usr/local/lib/node<br>sudo wget https://nodejs.org/dist/v20.14.0/node-v20.14.0-linux-x64.tar.xz<br></code></pre></td></tr></table></figure>
+<p>本文最初发布于 2024 年 6 月，使用 Node.js 20.14.0 举例。2026 年 9 月修订时，Node.js 20 已结束支持，下面改用 <strong>Node.js 24.21.0 LTS</strong>。后续安装请先查看 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download">Node.js 下载页</a>和<a target="_blank" rel="noopener" href="https://nodejs.org/en/about/previous-releases">版本支持状态</a>，选择仍受支持的 LTS 版本。</p>
+<h2 id="1-确认系统和架构"><a href="#1-确认系统和架构" class="headerlink" title="1. 确认系统和架构"></a>1. 确认系统和架构</h2><p>以下命令以 <strong>Bash</strong> 为例。系统需要具备 <code>curl</code>、<code>tar</code>、<code>xz</code>、<code>sha256sum</code>，安装到 <code>/usr/local/lib/nodejs</code> 时还需要 <code>sudo</code> 权限。</p>
+<p>先查看 CPU 架构：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">uname</span> -m<br></code></pre></td></tr></table></figure>
 
-<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><p>使用 <code>tar</code> 命令解压到当前目录：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo tar xf node-v20.14.0-linux-x64.tar.xz <br></code></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>命令输出</th>
+<th>下文的 <code>node_arch</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>x86_64</code></td>
+<td><code>x64</code></td>
+</tr>
+<tr>
+<td><code>aarch64</code> 或 <code>arm64</code></td>
+<td><code>arm64</code></td>
+</tr>
+</tbody></table>
+<p>这里使用的是面向 glibc Linux 的官方二进制包。Node.js 24 的相关平台要求包括 Linux 内核至少 4.18、glibc 至少 2.28，以及相应的 libstdc++ 版本；详情见<a target="_blank" rel="noopener" href="https://github.com/nodejs/node/blob/v24.21.0/BUILDING.md#platform-list">官方平台要求</a>。Alpine 等使用 musl 的发行版不能直接照搬本文的安装包。</p>
+<h2 id="2-下载并校验压缩包"><a href="#2-下载并校验压缩包" class="headerlink" title="2. 下载并校验压缩包"></a>2. 下载并校验压缩包</h2><p>以下步骤请在同一个 Bash 终端中依次执行，以保留设置的变量。这里以 x64 为例，ARM64 设备请将 <code>node_arch</code> 改为 <code>arm64</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">node_version=v24.21.0<br>node_arch=x64<br>node_dist=<span class="hljs-string">&quot;node-<span class="hljs-variable">$&#123;node_version&#125;</span>-linux-<span class="hljs-variable">$&#123;node_arch&#125;</span>&quot;</span><br>download_dir=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/Downloads/nodejs-<span class="hljs-variable">$&#123;node_version&#125;</span>&quot;</span><br><br><span class="hljs-built_in">mkdir</span> -p <span class="hljs-string">&quot;<span class="hljs-variable">$download_dir</span>&quot;</span><br><span class="hljs-built_in">cd</span> <span class="hljs-string">&quot;<span class="hljs-variable">$download_dir</span>&quot;</span><br><br>curl --fail --location --remote-name \<br>  <span class="hljs-string">&quot;https://nodejs.org/dist/<span class="hljs-variable">$&#123;node_version&#125;</span>/<span class="hljs-variable">$&#123;node_dist&#125;</span>.tar.xz&quot;</span><br>curl --fail --location --remote-name \<br>  <span class="hljs-string">&quot;https://nodejs.org/dist/<span class="hljs-variable">$&#123;node_version&#125;</span>/SHASUMS256.txt&quot;</span><br></code></pre></td></tr></table></figure>
 
-<p>解压完毕后可以选择删除压缩包：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">rm</span> node-v20.14.0-linux-x64.tar.xz <br></code></pre></td></tr></table></figure>
+<p>下载完成后，使用官方提供的 SHA-256 清单校验压缩包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sha256sum</span> --check --ignore-missing SHASUMS256.txt<br></code></pre></td></tr></table></figure>
 
-<h3 id="添加到环境变量"><a href="#添加到环境变量" class="headerlink" title="添加到环境变量"></a>添加到环境变量</h3><p>在 <code>/etc/profile</code> 文件末尾加上这样两句话：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> NODEJS_HOME=/usr/local/lib/node/node-v20.14.0-linux-x64<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$NODEJS_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<p>确认所下载的 <code>.tar.xz</code> 文件显示 <code>OK</code> 后再继续。若下载或校验失败，应先排查原因。SHA-256 校验用于核对文件完整性；需要进一步验证校验清单的来源时，可按 <a target="_blank" rel="noopener" href="https://github.com/nodejs/node#verifying-binaries">Node.js 官方说明验证签名</a>。</p>
+<h2 id="3-解压到安装目录"><a href="#3-解压到安装目录" class="headerlink" title="3. 解压到安装目录"></a>3. 解压到安装目录</h2><p>创建目录并解压：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">mkdir</span> -p /usr/local/lib/nodejs<br>sudo tar -xJf <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;node_dist&#125;</span>.tar.xz&quot;</span> -C /usr/local/lib/nodejs<br></code></pre></td></tr></table></figure>
 
-<p>终端操作下使用 <code>vim</code> 编辑器可以对上述文本进行编辑：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/profile<br></code></pre></td></tr></table></figure>
+<p>本例的安装目录为 <code>/usr/local/lib/nodejs/node-v24.21.0-linux-x64</code>，其中 <code>bin</code> 目录包含 <code>node</code>、<code>npm</code> 和 <code>npx</code>。</p>
+<h2 id="4-配置-Bash-环境变量"><a href="#4-配置-Bash-环境变量" class="headerlink" title="4. 配置 Bash 环境变量"></a>4. 配置 Bash 环境变量</h2><p>以下设置只针对当前用户的交互式 Bash 终端。在 <code>~/.bashrc</code> 末尾添加下面两行；版本和架构必须与实际解压的目录一致：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> NODEJS_HOME=<span class="hljs-string">&quot;/usr/local/lib/nodejs/node-v24.21.0-linux-x64&quot;</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$NODEJS_HOME</span>/bin:<span class="hljs-variable">$PATH</span>&quot;</span><br></code></pre></td></tr></table></figure>
 
-<p>按 <code>i</code> 进入编辑模式，编辑完成后按 <code>Esc</code> 回到命令行模式，输入 <code>:wq</code> 保存退出</p>
-<p>使用 <code>sorce</code> 命令启用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sorce /etc/profile<br></code></pre></td></tr></table></figure>
+<p>可以使用自己熟悉的编辑器，例如 <code>vim ~/.bashrc</code>。Vim 中按 <code>i</code> 进入插入模式，编辑完成后按 <code>Esc</code> 返回普通模式，再输入 <code>:wq</code> 保存退出。</p>
+<p>让修改在当前 Bash 终端中生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.bashrc<br><span class="hljs-built_in">hash</span> -r<br></code></pre></td></tr></table></figure>
 
-<h3 id="完成安装"><a href="#完成安装" class="headerlink" title="完成安装"></a>完成安装</h3><p>输入命令检查是否完成安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">node -v<br>npm -v<br></code></pre></td></tr></table></figure>
+<p>命令是 <code>source</code>，原文中的 <code>sorce</code> 是拼写错误。Bash 登录 Shell 是否加载 <code>~/.bashrc</code> 取决于登录配置文件；如有需要，在 <code>~/.bash_profile</code> 或 <code>~/.profile</code> 中显式加载它，具体规则见 <a target="_blank" rel="noopener" href="https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html">Bash 启动文件说明</a>。Zsh、Fish 和 systemd 服务使用不同的配置方式，不能直接套用这个步骤。</p>
+<h2 id="5-验证安装"><a href="#5-验证安装" class="headerlink" title="5. 验证安装"></a>5. 验证安装</h2><p>检查实际调用的程序路径及版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">command</span> -v node<br><span class="hljs-built_in">command</span> -v npm<br>node -v<br>npm -v<br>npx -v<br></code></pre></td></tr></table></figure>
+
+<p><code>node -v</code> 应输出 <code>v24.21.0</code>，程序路径应指向刚才安装目录中的 <code>bin</code>。如果仍然显示旧版本，可以用 <code>type -a node npm</code> 检查是否存在其他安装，以及 PATH 中的查找顺序。</p>
+<p>以后升级时，可以将新版解压到新的版本目录，再修改 <code>NODEJS_HOME</code>。本文所述安装方式需要手动更新，不会自动跟随 Node.js 的安全补丁。</p>
 
                 
               </div>
@@ -320,6 +356,27 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="category-chain-item">环境配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
@@ -327,8 +384,6 @@
         <a href="/tags/Node-js/" class="print-no-link">#Node.js</a>
       
         <a href="/tags/Linux/" class="print-no-link">#Linux</a>
-      
-        <a href="/tags/%E9%9A%8F%E7%AC%94/" class="print-no-link">#随笔</a>
       
     </div>
   
@@ -340,7 +395,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>关于在 Linux 下安装 Node.js</div>
+      <div>在 Linux 上使用官方二进制包安装 Node.js</div>
       <div>https://www.algor.top/2024/06/17/Node-js-install-in-Linux/</div>
     </div>
     <div class="license-meta">
@@ -498,8 +553,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-      
-
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
   
